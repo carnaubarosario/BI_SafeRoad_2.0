@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="7107F421-2213-55C4-2C0F-0876A8FDD37B" containerWithKeyObject="84605220-427F-F57B-5700-B4214437DC60" localFKIndex="303FD0BA-B4B0-B6D4-AFEB-FB96CFA8BFE6" name="fk_fato_cnd">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 22:04:02 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<referredTableLongName>dim_cnd_meteorologica</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>02CB6767-295C-D8A0-861F-841224DB85CC</referredTableID>
+<keyObject>99733062-A1E4-9B90-FC7A-CDA67E05330A</keyObject>
+<referredKeyID>99733062-A1E4-9B90-FC7A-CDA67E05330A</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_cnd</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,310 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="84605220-427F-F57B-5700-B4214437DC60" name="fato_acidentes">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:24:51 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<ordsAlias>table_9</ordsAlias>
+<abbreviation>fato</abbreviation>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_fato" id="5CA2076E-B8A2-5414-A184-63A7C72FBA5F">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:35:19 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_tempo" id="F4A90B9A-5EA3-90F6-7347-4DB9E3C54A6D">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:35:19 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7C5B26AE-4404-CCC2-505A-B5FFD49EE04C" referredColumn="D29739F2-DD79-6F8F-3399-F8B45ADAF4A7"/>
+</associations>
+</Column>
+<Column name="id_vitima" id="CD415F36-D765-68A4-6B30-6DBF8C520F75">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:35:19 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="879E8D85-24CC-196F-85CB-FD6082114AAE" referredColumn="9D1D85EA-9493-FABA-3BE0-CC6ABA8576E5"/>
+</associations>
+</Column>
+<Column name="id_pista" id="9179C657-85EF-1C8C-4373-7FA7F15C33E2">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:35:19 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="80BDB0D4-55B7-CF1D-8617-544ADD1E8E8A" referredColumn="DCB95E79-B63D-64B7-D222-6E85C324B7DC"/>
+</associations>
+</Column>
+<Column name="id_acidente" id="B5A86AE1-9906-7275-08D3-517956387CA2">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:35:19 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="69C091EB-58C7-ABCA-F48E-D8077065D18E" referredColumn="227BA783-0E8E-C23D-BD7F-104DDD9EB895"/>
+</associations>
+</Column>
+<Column name="id_veiculo" id="B235A162-EA5C-E320-6200-78FE7532BCC4">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:35:19 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="211FCA09-BD1B-9049-C9EE-4F0AC8BF17C6" referredColumn="225A9B80-7830-B672-BE9B-866136F427F7"/>
+</associations>
+</Column>
+<Column name="id_localidade" id="2B80B5CB-85B2-4ABB-404E-A6429316A350">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:35:19 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C398E5BF-771E-4F52-A21E-463C50A727F9" referredColumn="140ABCA1-14B0-60B2-BDBA-0AE8A17CD11A"/>
+</associations>
+</Column>
+<Column name="id_cnd" id="47322BD5-BCEB-58A9-A25E-761ACB0D1D77">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:35:19 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7107F421-2213-55C4-2C0F-0876A8FDD37B" referredColumn="F5EA5373-4A95-CAEE-C3BC-748412AE2E2D"/>
+</associations>
+</Column>
+<Column name="ilesos" id="A0231CF2-982B-2882-F83F-A73D70808463">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:35:19 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="feridos_leves" id="38E9ED2A-4552-F0E9-B88B-E283D8043367">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:35:19 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="feridos_graves" id="BDB61103-DC99-F7D2-6190-D980FFB9F4CF">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:35:19 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="mortos" id="770F29CB-092D-AB7E-5F2D-B409563BBE31">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:35:19 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="dim_acidente_id_acidente" id="16ABFE00-FEE8-8DE4-5812-CCB1E5004BC2">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:52:28 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FF385A88-9F64-5293-B9A7-23E330DED95B" name="fato_acidentes_PK">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:35:19 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5CA2076E-B8A2-5414-A184-63A7C72FBA5F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3F74364C-3140-9D2A-28E2-338D97E470F5" name="idx_fato_id_tempo">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:35:19 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F4A90B9A-5EA3-90F6-7347-4DB9E3C54A6D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A683AB0C-223A-C714-2FA6-FBE2070E8FF4" name="idx_fato_id_vitima">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:35:19 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CD415F36-D765-68A4-6B30-6DBF8C520F75"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9597798A-7802-668F-393E-54F1017103A6" name="idx_fato_id_pista">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:35:19 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9179C657-85EF-1C8C-4373-7FA7F15C33E2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9620FB4C-08C2-EE6C-2C9E-5680B3FF853C" name="idx_fato_id_acidente">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:35:19 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B5A86AE1-9906-7275-08D3-517956387CA2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A76E7B11-4862-4B32-5606-E8073066BA25" name="idx_fato_id_veiculo">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:35:19 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B235A162-EA5C-E320-6200-78FE7532BCC4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="32798BC7-0A4B-3B3D-AAB9-AEB5452B2B6C" name="idx_fato_id_localidade">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:35:19 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2B80B5CB-85B2-4ABB-404E-A6429316A350"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="391AB808-13F3-3764-F46B-C1D921B1333C" name="idx_fato_id_cnd">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:35:19 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="47322BD5-BCEB-58A9-A25E-761ACB0D1D77"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C1A65F44-2722-2F2E-C0A8-433CFAE2A5A8" name="fk_fato_tempo">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:52:28 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F4A90B9A-5EA3-90F6-7347-4DB9E3C54A6D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4B15E680-42BF-717F-7293-99DD365C7CFF" name="fk_fato_pista">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 22:02:43 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9179C657-85EF-1C8C-4373-7FA7F15C33E2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CEA64256-E93D-5DED-AFB7-08AFD9666866" name="fk_fato_veiculo">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 22:03:19 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B235A162-EA5C-E320-6200-78FE7532BCC4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="47E10A2D-3FF6-549C-D4DC-71DE9E660621" name="fk_fato_acidente">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 22:03:38 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B5A86AE1-9906-7275-08D3-517956387CA2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="303FD0BA-B4B0-B6D4-AFEB-FB96CFA8BFE6" name="fk_fato_cnd">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 22:04:02 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="47322BD5-BCEB-58A9-A25E-761ACB0D1D77"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4C5B6D09-BC34-1E78-E400-180B5EE089A2" name="fk_fato_vitima">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 22:04:20 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CD415F36-D765-68A4-6B30-6DBF8C520F75"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="15699F03-07FB-5C13-CAF5-81BEA9399A94" name="fk_fato_localidade">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 22:04:38 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2B80B5CB-85B2-4ABB-404E-A6429316A350"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

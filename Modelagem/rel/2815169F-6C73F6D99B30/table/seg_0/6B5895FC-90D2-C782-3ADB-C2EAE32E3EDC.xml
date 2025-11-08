@@ -1,0 +1,68 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6B5895FC-90D2-C782-3ADB-C2EAE32E3EDC" name="dim_acidente">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:30:29 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<ordsAlias>table_1</ordsAlias>
+<abbreviation>acidente</abbreviation>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_acidente" id="227BA783-0E8E-C23D-BD7F-104DDD9EB895">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:33:10 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tipo_acidente" id="BD9CB624-1C49-F157-94FE-6525A53BFFE2">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:33:10 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="classificacao_acidente" id="E2A73E1E-B33A-388C-80D4-B6B335BB0607">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:33:10 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="919D9A58-8028-EDE0-1084-53C0AB05C300" name="dim_acidente_PK">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:33:10 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="227BA783-0E8E-C23D-BD7F-104DDD9EB895"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EE05855C-FFA7-55FF-CD8A-768FA515084E" name="ix_dim_acidente_nat">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:33:10 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BD9CB624-1C49-F157-94FE-6525A53BFFE2"/>
+<colUsage columnID="E2A73E1E-B33A-388C-80D4-B6B335BB0607"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

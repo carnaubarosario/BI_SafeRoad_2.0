@@ -1,0 +1,118 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AF0CF12F-1908-EC4D-44C7-B2A3F939F583" name="dim_localidade">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:09:42 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<ordsAlias>table_1</ordsAlias>
+<abbreviation>localidade</abbreviation>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_localidade" id="140ABCA1-14B0-60B2-BDBA-0AE8A17CD11A">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:12:31 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="municipio" id="EA44B600-15E0-AD0C-7B8B-07D6DA53FAD6">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:12:31 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="uf" id="0557DBBF-663E-2343-7102-B4613782DBA2">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:12:31 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="br" id="F036B318-E763-09A3-DF01-FB4DCE991247">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:12:31 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="km" id="83CBC005-FAEB-1F8A-EBCC-D98FB8FE2354">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:14:22 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="latitude" id="0441346B-50C9-188E-7D79-6419494AFC2D">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:14:22 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>6</dataTypeScale>
+<ownDataTypeParameters>,10,6</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="longitude" id="53649F85-C2B7-1E54-2EB2-7CC2D77D00EF">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:14:22 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>6</dataTypeScale>
+<ownDataTypeParameters>,10,6</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="40B130B5-98A3-A1BC-37A8-C085D0DE6002" name="dim_localidade_pk">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:09:42 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="140ABCA1-14B0-60B2-BDBA-0AE8A17CD11A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3381745E-D39E-4DE5-9D8C-8A1D9389FC56" name="ix_dim_localidade_nat">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:14:22 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EA44B600-15E0-AD0C-7B8B-07D6DA53FAD6"/>
+<colUsage columnID="0557DBBF-663E-2343-7102-B4613782DBA2"/>
+<colUsage columnID="F036B318-E763-09A3-DF01-FB4DCE991247"/>
+<colUsage columnID="83CBC005-FAEB-1F8A-EBCC-D98FB8FE2354"/>
+<colUsage columnID="0441346B-50C9-188E-7D79-6419494AFC2D"/>
+<colUsage columnID="53649F85-C2B7-1E54-2EB2-7CC2D77D00EF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

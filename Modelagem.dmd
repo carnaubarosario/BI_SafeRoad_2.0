@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="Modelagem" id="8832B8FD-97FF-F7A4-1EDE-3345A51DD68F" version="3.5">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:30:02 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>8832B8FD-97FF-F7A4-1EDE-3345A51DD68F</designId>
+</OSDM_Design>

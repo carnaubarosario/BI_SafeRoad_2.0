@@ -1,0 +1,146 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B37E9D79-B86D-716B-FD79-0BBA0E318DAA" name="dim_tempo">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:21:39 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<ordsAlias>table_8</ordsAlias>
+<abbreviation>tempo</abbreviation>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_tempo" id="D29739F2-DD79-6F8F-3399-F8B45ADAF4A7">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:24:40 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data_completa" id="A54604E3-C3A0-8836-61B6-E00C039A3D7B">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:24:40 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="horario" id="4015F32B-398F-2F97-163F-043B260800E9">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:24:40 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fase_dia" id="044E3063-A694-E940-25AD-1F1705FAA433">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:24:40 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ano" id="ADCC8AD4-6125-B073-368D-0B994B8EACD7">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:24:40 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="mes" id="EAF249AB-1052-629D-0E84-BAE389BC528D">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:24:40 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="dia" id="765C1B72-E3B2-1163-B4A2-8B23F1892C5D">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:24:40 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="trimestre" id="CF0863F1-C4D0-1246-12F2-B03BFD764519">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:24:40 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nome_mes" id="E96B839F-3C4F-9ED7-7AC4-7E9E3B46F24E">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:24:40 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="dia_semana" id="9A2A134A-288A-F982-D4A8-83F5196816BF">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:24:40 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9AFC94FD-2847-1DC6-3B43-7C1430C791E4" name="dim_tempo_PK">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:24:40 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D29739F2-DD79-6F8F-3399-F8B45ADAF4A7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="29675E11-5D73-9AF2-6AFB-CD8AE036295E" name="ix_dim_tempo_nat">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:24:40 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A54604E3-C3A0-8836-61B6-E00C039A3D7B"/>
+<colUsage columnID="4015F32B-398F-2F97-163F-043B260800E9"/>
+<colUsage columnID="044E3063-A694-E940-25AD-1F1705FAA433"/>
+<colUsage columnID="ADCC8AD4-6125-B073-368D-0B994B8EACD7"/>
+<colUsage columnID="EAF249AB-1052-629D-0E84-BAE389BC528D"/>
+<colUsage columnID="765C1B72-E3B2-1163-B4A2-8B23F1892C5D"/>
+<colUsage columnID="CF0863F1-C4D0-1246-12F2-B03BFD764519"/>
+<colUsage columnID="E96B839F-3C4F-9ED7-7AC4-7E9E3B46F24E"/>
+<colUsage columnID="9A2A134A-288A-F982-D4A8-83F5196816BF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="80BDB0D4-55B7-CF1D-8617-544ADD1E8E8A" containerWithKeyObject="84605220-427F-F57B-5700-B4214437DC60" localFKIndex="4B15E680-42BF-717F-7293-99DD365C7CFF" name="fk_fato_pista">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 22:02:43 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<referredTableLongName>dim_pista</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>57F8A6D0-AFA7-5029-6EF4-BAA5743FEEE6</referredTableID>
+<keyObject>67DF4E67-6A95-B3D7-13D1-D59C5A3877D2</keyObject>
+<referredKeyID>67DF4E67-6A95-B3D7-13D1-D59C5A3877D2</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_pista</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

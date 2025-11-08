@@ -1,0 +1,79 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1B7BA6B5-F551-BFD6-726F-B1C914617214" name="dim_veiculo">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:36:38 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<ordsAlias>table_4</ordsAlias>
+<abbreviation>veiculo</abbreviation>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_veiculo" id="225A9B80-7830-B672-BE9B-866136F427F7">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:38:22 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tipo_veiculo" id="32EC153F-98F5-D3AC-32E3-CAA8398BB60F">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:38:22 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Marca" id="5EE859C6-9B5E-17E2-A358-92E14F691585">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:38:22 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ano_fabricacao" id="DA43C33F-2A96-E54C-E56B-3ADE6C1FDA7B">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:38:22 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B4F0CB29-653E-218A-2BAF-F7AD5BD7FD59" name="dim_veiculo_PK">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:38:22 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="225A9B80-7830-B672-BE9B-866136F427F7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F3146556-2B87-2923-72B7-838EB9E5D7CD" name="ix_dim_veiculo_nat">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:38:22 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="32EC153F-98F5-D3AC-32E3-CAA8398BB60F"/>
+<colUsage columnID="5EE859C6-9B5E-17E2-A358-92E14F691585"/>
+<colUsage columnID="DA43C33F-2A96-E54C-E56B-3ADE6C1FDA7B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

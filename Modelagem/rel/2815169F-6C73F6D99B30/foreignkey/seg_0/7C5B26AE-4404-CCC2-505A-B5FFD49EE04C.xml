@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="7C5B26AE-4404-CCC2-505A-B5FFD49EE04C" containerWithKeyObject="84605220-427F-F57B-5700-B4214437DC60" localFKIndex="C1A65F44-2722-2F2E-C0A8-433CFAE2A5A8" name="fk_fato_tempo">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:52:28 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<referredTableLongName>dim_tempo</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>B37E9D79-B86D-716B-FD79-0BBA0E318DAA</referredTableID>
+<keyObject>9AFC94FD-2847-1DC6-3B43-7C1430C791E4</keyObject>
+<referredKeyID>9AFC94FD-2847-1DC6-3B43-7C1430C791E4</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_tempo</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

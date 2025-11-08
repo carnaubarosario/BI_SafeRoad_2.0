@@ -1,0 +1,102 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="57F8A6D0-AFA7-5029-6EF4-BAA5743FEEE6" name="dim_pista">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:33:36 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<ordsAlias>table_2</ordsAlias>
+<abbreviation>pista</abbreviation>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_pista" id="DCB95E79-B63D-64B7-D222-6E85C324B7DC">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:36:08 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="sentido_via" id="94C172A3-7BCC-2D51-A908-1D6B38FA5D23">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:36:08 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tipo_pista" id="625C84CF-8F48-4259-8A13-1CD471F657AD">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:36:08 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tracado_via" id="DCB07625-D87E-5E5F-C792-BD68B2878367">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:36:08 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="uso_solo" id="3F5775B8-A321-F80C-8BE1-4AD25B984BBC">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:36:08 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fato_acidentes_id_fato" id="A7705C9E-D102-AEEE-14E6-F47AA34A9FDC">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 21:59:10 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="67DF4E67-6A95-B3D7-13D1-D59C5A3877D2" name="dim_pista_PK">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:36:08 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DCB95E79-B63D-64B7-D222-6E85C324B7DC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1423FC71-B8E6-8750-1E3C-A88C30E26EDE" name="ix_dim_pista_nat">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 00:36:08 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="94C172A3-7BCC-2D51-A908-1D6B38FA5D23"/>
+<colUsage columnID="625C84CF-8F48-4259-8A13-1CD471F657AD"/>
+<colUsage columnID="DCB07625-D87E-5E5F-C792-BD68B2878367"/>
+<colUsage columnID="3F5775B8-A321-F80C-8BE1-4AD25B984BBC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="C398E5BF-771E-4F52-A21E-463C50A727F9" containerWithKeyObject="84605220-427F-F57B-5700-B4214437DC60" localFKIndex="15699F03-07FB-5C13-CAF5-81BEA9399A94" name="fk_fato_localidade">
+<createdBy>umble</createdBy>
+<createdTime>2025-11-04 22:04:38 UTC</createdTime>
+<ownerDesignName>Modelagem</ownerDesignName>
+<referredTableLongName>dim_localidade</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>AF0CF12F-1908-EC4D-44C7-B2A3F939F583</referredTableID>
+<keyObject>40B130B5-98A3-A1BC-37A8-C085D0DE6002</keyObject>
+<referredKeyID>40B130B5-98A3-A1BC-37A8-C085D0DE6002</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_localidade</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
