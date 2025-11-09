@@ -136,9 +136,8 @@ ALTER TABLE public.fato_acidentes
 ADD COLUMN chave_hash CHAR(32)
 GENERATED ALWAYS AS (
   md5(
-    id_tempo::text || '|' ||
+    id_tempo::text      || '|' ||
     id_localidade::text || '|' ||
-    id_acidente::text   || '|' ||
     id_pista::text      || '|' ||
     id_cnd::text
   )
@@ -147,4 +146,5 @@ GENERATED ALWAYS AS (
 -- 2) indexar para distinct/counts e joins rápidos
 CREATE INDEX CONCURRENTLY IF NOT EXISTS ix_fato_chave_hash
   ON public.fato_acidentes (chave_hash);
+
 
