@@ -23,7 +23,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 
 # ==========================
-# LOGGING 
+# LOGGING
 # ==========================
 os.makedirs("logs", exist_ok=True)
 LOG_FILE = "logs/etl_run.log"
@@ -40,8 +40,8 @@ log = logging.getLogger("safe_road_etl")
 # ==========================
 # TELEGRAM ALERTS
 # ==========================
-TG_TOKEN  = os.getenv("TG_TOKEN",  "Seu Token Aqui")   # ex: 1234567890:ABC...
-TG_CHATID = os.getenv("TG_CHATID", "Seu ChatID Aqui")  # ex: 123456789
+TG_TOKEN  = os.getenv("TG_TOKEN",  "Seu Token Aqui")
+TG_CHATID = os.getenv("TG_CHATID", "Seu ChatID Aqui")
 TG_BASE   = f"https://api.telegram.org/bot{TG_TOKEN}"
 TG_TIMEOUT = 15
 
@@ -99,12 +99,11 @@ def fmt_sec(s):
         return "-"
 
 def tg_alert_success(stats, tempos):
-    """Envia um resumo de sucesso + anexa o log."""
     linhas  = stats.get("fact_inserted_rows", 0)
     lotes   = stats.get("fact_batches", 0)
     skipped = stats.get("fact_skipped_null_keys", 0)
     msg = (
-        "✅ *ETL PRF finalizado com sucesso*\n"
+        "✅ *ETL BI SafeRoad 2.0 finalizado com sucesso. Pode brincar com as análises a partir de agora. Faça um cafézinho e bom trabalho!*\n"
         f"*Fato inserido:* `{linhas:,}` linhas em `{lotes}` lote(s)\n"
         f"*Puladas por chave nula:* `{skipped}`\n\n"
         "*Duração das etapas:*\n"
@@ -117,7 +116,6 @@ def tg_alert_success(stats, tempos):
         tg_send_document_from_path(LOG_FILE, caption="📎 Log da execução")
 
 def tg_alert_error(etapa, err, started_at=None):
-    """Envia alerta de erro + traceback resumido + anexa log."""
     tb = "".join(traceback.format_exception_only(type(err), err)).strip()
     if hasattr(err, "__traceback__"):
         tb_full = "".join(traceback.format_tb(err.__traceback__))
@@ -131,12 +129,10 @@ def tg_alert_error(etapa, err, started_at=None):
     if started_at:
         dur = (datetime.now() - started_at).total_seconds()
         msg += f"*Tempo até o erro:* `{fmt_sec(dur)}`\n"
-    # corta traceback grande para o texto e manda completo como anexo
     short_tb = tb_full[-1500:] if len(tb_full) > 1500 else tb_full
     if short_tb:
         msg += "\n*Traceback (resumo):*\n```\n" + short_tb + "\n```"
     tg_send_message(msg, parse_mode="Markdown")
-    # anexa log
     if os.path.isfile(LOG_FILE):
         tg_send_document_from_path(LOG_FILE, caption=f"📎 Log - erro na etapa {etapa}")
 
@@ -144,7 +140,7 @@ def tg_alert_error(etapa, err, started_at=None):
 # CONFIGURAÇÕES
 # ==========================
 SITE_PRF = "https://www.gov.br/prf/pt-br/acesso-a-informacao/dados-abertos/dados-abertos-da-prf"
-EXTRACT_FOLDER = r"Caminho para salvar bases de dadps"
+EXTRACT_FOLDER = r"C:\Users\umble\OneDrive\Área de Trabalho\Datatran Novo\Bases"
 os.makedirs(EXTRACT_FOLDER, exist_ok=True)
 CSV_OUTPUT = os.path.join(EXTRACT_FOLDER, "acidentes_consolidados.csv")
 
@@ -159,7 +155,7 @@ DB_CONFIG = {
 ANOS = ["2025","2024","2023","2022","2021","2020","2019"]
 TITULO_DATASET = "Agrupados por pessoa - Todas as causas e tipos de acidentes"
 
-# Otimização 
+# Otimização
 BATCH = 20000
 PAGE_SIZE = 5000
 
@@ -354,7 +350,6 @@ except Exception as e:
     extract_end = datetime.now()
     tempos["extract"] = (extract_end - extract_ini).total_seconds()
     log.exception("Falha na etapa EXTRACT")
-    # grava auditoria e encerra
     conn = connect_pg(DB_CONFIG); conn.autocommit=True
     cur = conn.cursor()
     ensure_etl_log_table(cur)
@@ -389,9 +384,11 @@ try:
     df['condicao_meteorologica']=(df['condicao_meteorologica'].astype(str).str.strip().str.slice(0,100)
                                     .replace({'':"NÃO INFORMADO","None":"NÃO INFORMADO"}))
 
+    # Numéricos
     for col in ['idade','ilesos','feridos_leves','feridos_graves','mortos','pesid','br']:
         if col in df.columns: df[col]=pd.to_numeric(df[col], errors='coerce').fillna(0).astype(int)
 
+    # KM e coordenadas
     if 'km' in df.columns:
         df['km']=(df['km'].astype(str).str.replace(",",".",regex=False).str.extract(r'([-+]?\d*\.?\d+)', expand=False))
         df['km']=pd.to_numeric(df['km'], errors='coerce').fillna(0.0)
@@ -400,15 +397,18 @@ try:
         if col in df.columns:
             df[col]=pd.to_numeric(df[col].astype(str).str.replace(",",".",regex=False), errors='coerce').fillna(0.0)
 
+    # Textos padrão
     for col in ['tipo_veiculo','tipo_envolvido','estado_fisico','sexo','marca',
                 'tipo_acidente','classificacao_acidente','municipio','uf',
                 'sentido_via','tipo_pista','tracado_via','uso_solo','condicao_meteorologica']:
         if col in df.columns: df[col]=df[col].fillna("NÃO INFORMADO").replace('',"NÃO INFORMADO")
 
+    # Ano de fabricação
     if 'ano_fabricacao' in df.columns:
         df['ano_fabricacao']=pd.to_numeric(df['ano_fabricacao'], errors='coerce').fillna(1900).astype(int)
         df.loc[df['ano_fabricacao']<=0,'ano_fabricacao']=1900
 
+    # Datas/tempo
     if 'data_inversa' in df.columns:
         df['data_completa']=pd.to_datetime(df['data_inversa'], errors='coerce')
     else:
@@ -428,6 +428,23 @@ try:
         horas=df['horario_dt'].dt.hour
         df['fase_dia']=pd.cut(horas, bins=[-1,5,11,17,23],
                               labels=['MADRUGADA','MANHÃ','TARDE','NOITE']).astype(str).fillna('NÃO INFORMADO')
+
+    # === (NOVO) Causa do acidente ===
+    cand_causa = ['causa_acidente','causa','causa_principal','descricao_causa','motivo_acidente']
+    lower_map  = {c.lower(): c for c in df.columns}
+    src        = next((c for c in cand_causa if c in lower_map), None)
+
+    if src:
+        df.rename(columns={lower_map[src]: 'causa_acidente'}, inplace=True)
+    if 'causa_acidente' not in df.columns:
+        df['causa_acidente'] = None
+
+    df['causa_acidente'] = (
+        df['causa_acidente']
+            .astype(str).str.strip()
+            .replace({'': 'NÃO INFORMADO', 'None': 'NÃO INFORMADO'})
+            .str.slice(0, 255)
+    )
 
     # CSV para inspeção
     df_out=df.copy(); df_out['horario']=df['horario_dt'].dt.time
@@ -460,7 +477,7 @@ log.info("Iniciando etapa LOAD")
 conn=connect_pg(DB_CONFIG)
 cur=conn.cursor()
 
-# Otimização - Ganhos em inserts e evitar overhead de buffers
+# Otimizações
 cur.execute("SET synchronous_commit = OFF;")
 cur.execute("SET temp_buffers = '128MB';")
 cur.execute("SET work_mem = '256MB';")
@@ -498,16 +515,34 @@ _cache={k:{} for k in stats if k.startswith('dim_')}
 
 # ---- funções get_or_create com contagem ----
 def get_or_create_dim_acidente(r):
-    key=(as_text(r.get('tipo_acidente')), as_text(r.get('classificacao_acidente')))
-    if key in _cache['dim_acidente']: stats['dim_acidente']['lookups']+=1; return _cache['dim_acidente'][key]
-    cur.execute("""SELECT id_acidente FROM dim_acidente
-                   WHERE tipo_acidente=%s AND classificacao_acidente=%s
-                   ORDER BY id_acidente DESC LIMIT 1""", key)
+    tipo = as_text(r.get('tipo_acidente'))
+    cls  = as_text(r.get('classificacao_acidente'))
+    csa  = as_text(r.get('causa_acidente'))
+
+    key = (tipo, cls, csa)
+    if key in _cache['dim_acidente']:
+        stats['dim_acidente']['lookups']+=1
+        return _cache['dim_acidente'][key]
+
+    cur.execute("""
+        SELECT id_acidente FROM dim_acidente
+        WHERE tipo_acidente=%s AND classificacao_acidente=%s AND causa_acidente=%s
+        ORDER BY id_acidente DESC LIMIT 1
+    """, key)
     t=cur.fetchone()
-    if t: _cache['dim_acidente'][key]=t[0]; stats['dim_acidente']['lookups']+=1; return t[0]
-    cur.execute("""INSERT INTO dim_acidente (tipo_acidente, classificacao_acidente)
-                   VALUES (%s,%s) RETURNING id_acidente""", key)
-    nid=cur.fetchone()[0]; _cache['dim_acidente'][key]=nid; stats['dim_acidente']['inserted']+=1; return nid
+    if t:
+        _cache['dim_acidente'][key]=t[0]
+        stats['dim_acidente']['lookups']+=1
+        return t[0]
+
+    cur.execute("""
+        INSERT INTO dim_acidente (tipo_acidente, classificacao_acidente, causa_acidente)
+        VALUES (%s,%s,%s) RETURNING id_acidente
+    """, key)
+    nid=cur.fetchone()[0]
+    _cache['dim_acidente'][key]=nid
+    stats['dim_acidente']['inserted']+=1
+    return nid
 
 def get_or_create_dim_pista(r):
     key=(as_text(r.get('sentido_via')), as_text(r.get('tipo_pista')),
@@ -645,6 +680,13 @@ except Exception as e:
     load_end = datetime.now()
     tempos["load"] = (load_end - load_ini).total_seconds()
     log.exception("Falha na etapa LOAD")
+
+    # >>> IMPORTANTE: limpar estado de transação abortada <<<
+    try:
+        conn.rollback()
+    except Exception:
+        pass
+
     # auditoria erro
     ensure_etl_structures(cur, conn)
     insert_etl_log(cur, "LOAD", load_ini, load_end, stats.get('fact_inserted_rows',0), status="ERRO", erro=str(e))
@@ -674,5 +716,4 @@ log.info("✅ Pipeline finalizada com sucesso.")
 try:
     tg_alert_success(stats, tempos)
 except Exception as _e:
-    # não falha o processo por conta de alerta
     log.warning(f"Falha ao enviar alerta de sucesso no Telegram: {_e}")
