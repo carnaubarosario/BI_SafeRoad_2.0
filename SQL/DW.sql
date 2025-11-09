@@ -130,3 +130,21 @@ CREATE INDEX IF NOT EXISTS ix_dim_tempo_nat
 
 CREATE INDEX IF NOT EXISTS ix_dim_cnd_nat
   ON dim_cnd_meteorologica (cnd_meteorologica);
+
+-- 1) adicionar a coluna gerada
+ALTER TABLE public.fato_acidentes
+ADD COLUMN chave_hash CHAR(32)
+GENERATED ALWAYS AS (
+  md5(
+    id_tempo::text || '|' ||
+    id_localidade::text || '|' ||
+    id_acidente::text   || '|' ||
+    id_pista::text      || '|' ||
+    id_cnd::text
+  )
+) STORED;
+
+-- 2) indexar para distinct/counts e joins rápidos
+CREATE INDEX CONCURRENTLY IF NOT EXISTS ix_fato_chave_hash
+  ON public.fato_acidentes (chave_hash);
+
