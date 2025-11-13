@@ -147,4 +147,25 @@ GENERATED ALWAYS AS (
 CREATE INDEX CONCURRENTLY IF NOT EXISTS ix_fato_chave_hash
   ON public.fato_acidentes (chave_hash);
 
+ALTER TABLE public.dim_tempo
+  ADD COLUMN IF NOT EXISTS mes_ord         SMALLINT,
+  ADD COLUMN IF NOT EXISTS dia_semana_ord  SMALLINT;
+
+UPDATE public.dim_tempo t
+SET
+  nome_mes = CASE EXTRACT(MONTH FROM t.data_completa)
+               WHEN 1 THEN 'janeiro'     WHEN 2 THEN 'fevereiro' WHEN 3 THEN 'março'
+               WHEN 4 THEN 'abril'       WHEN 5 THEN 'maio'      WHEN 6 THEN 'junho'
+               WHEN 7 THEN 'julho'       WHEN 8 THEN 'agosto'    WHEN 9 THEN 'setembro'
+               WHEN 10 THEN 'outubro'    WHEN 11 THEN 'novembro' WHEN 12 THEN 'dezembro'
+             END,
+  dia_semana = CASE EXTRACT(ISODOW FROM t.data_completa)  -- 1=Seg ... 7=Dom
+                 WHEN 1 THEN 'segunda-feira' WHEN 2 THEN 'terça-feira'  WHEN 3 THEN 'quarta-feira'
+                 WHEN 4 THEN 'quinta-feira'  WHEN 5 THEN 'sexta-feira'  WHEN 6 THEN 'sábado'
+                 WHEN 7 THEN 'domingo'
+               END,
+  mes_ord        = EXTRACT(MONTH FROM t.data_completa)::smallint,
+  dia_semana_ord = EXTRACT(ISODOW FROM t.data_completa)::smallint;
+
+
 
