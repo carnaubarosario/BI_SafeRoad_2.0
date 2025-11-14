@@ -131,21 +131,22 @@ CREATE INDEX IF NOT EXISTS ix_dim_tempo_nat
 CREATE INDEX IF NOT EXISTS ix_dim_cnd_nat
   ON dim_cnd_meteorologica (cnd_meteorologica);
 
--- 1) adicionar a coluna gerada
+-- chave hash para contar acidentes distintos
 ALTER TABLE public.fato_acidentes
-ADD COLUMN chave_hash CHAR(32)
+ADD COLUMN chave_hash_ BIGINT
 GENERATED ALWAYS AS (
-  md5(
-    id_tempo::text      || '|' ||
-    id_localidade::text || '|' ||
-    id_pista::text      || '|' ||
-    id_cnd::text
-  )
+    (
+        hashint4(id_tempo)
+        # hashint4(id_localidade)
+        # hashint4(id_pista)
+        # hashint4(id_cnd)
+    )::BIGINT
 ) STORED;
 
--- 2) indexar para distinct/counts e joins rápidos
-CREATE INDEX CONCURRENTLY IF NOT EXISTS ix_fato_chave_hash
-  ON public.fato_acidentes (chave_hash);
+-- index para joins mais rápidos
+CREATE INDEX idx_fato_acidentes_chave_hash_
+ON public.fato_acidentes (chave_hash_);
+
 
 ALTER TABLE public.dim_tempo
   ADD COLUMN IF NOT EXISTS mes_ord         SMALLINT,
@@ -166,6 +167,7 @@ SET
                END,
   mes_ord        = EXTRACT(MONTH FROM t.data_completa)::smallint,
   dia_semana_ord = EXTRACT(ISODOW FROM t.data_completa)::smallint;
+
 
 
 
