@@ -6,7 +6,8 @@
 CREATE TABLE dim_acidente (
   id_acidente            SERIAL PRIMARY KEY,
   tipo_acidente          VARCHAR(100) NOT NULL,
-  classificacao_acidente VARCHAR(100) NOT NULL
+  classificacao_acidente VARCHAR(100) NOT NULL,
+  causa_acidente varchar(255) NOT NULL
 );
 
 -- sentido/tipo/tracado/uso do solo
@@ -167,6 +168,7 @@ SET
                END,
   mes_ord        = EXTRACT(MONTH FROM t.data_completa)::smallint,
   dia_semana_ord = EXTRACT(ISODOW FROM t.data_completa)::smallint;
+
 
 
 
