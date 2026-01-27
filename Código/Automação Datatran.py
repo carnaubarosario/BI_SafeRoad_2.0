@@ -40,8 +40,9 @@ log = logging.getLogger("safe_road_etl")
 # ==========================
 # TELEGRAM ALERTS
 # ==========================
-TG_TOKEN  = os.getenv("TG_TOKEN",  "Seu Token Aqui")
-TG_CHATID = os.getenv("TG_CHATID", "Seu ChatID Aqui")
+# ✅ Recomendo manter token/chatid em variáveis de ambiente
+TG_TOKEN  = os.getenv("TG_TOKEN",  "Seu Toker Aqui")
+TG_CHATID = os.getenv("TG_CHATID", "Seu chat id aqui")
 TG_BASE   = f"https://api.telegram.org/bot{TG_TOKEN}"
 TG_TIMEOUT = 15
 
@@ -103,7 +104,7 @@ def tg_alert_success(stats, tempos):
     lotes   = stats.get("fact_batches", 0)
     skipped = stats.get("fact_skipped_null_keys", 0)
     msg = (
-        "✅ *ETL BI SafeRoad 2.0 finalizado com sucesso. Pode brincar com as análises a partir de agora. Faça um cafézinho e bom trabalho!*\n"
+        "✅ *ETL BI SafeRoad 2.0 finalizado com sucesso.*\n"
         f"*Fato inserido:* `{linhas:,}` linhas em `{lotes}` lote(s)\n"
         f"*Puladas por chave nula:* `{skipped}`\n\n"
         "*Duração das etapas:*\n"
@@ -308,6 +309,7 @@ tempos = {}
 extract_ini = datetime.now()
 log.info("Iniciando etapa EXTRACT")
 reg_extract = 0
+
 try:
     driver=build_driver(headless=True); todos=[]
     try:
@@ -357,6 +359,7 @@ except Exception as e:
     cur.close(); conn.close()
     tg_alert_error("EXTRACT", e, extract_ini)
     raise
+
 # auditoria extract (OK)
 conn = connect_pg(DB_CONFIG); conn.autocommit=True
 cur = conn.cursor()
@@ -403,6 +406,14 @@ try:
                 'sentido_via','tipo_pista','tracado_via','uso_solo','condicao_meteorologica']:
         if col in df.columns: df[col]=df[col].fillna("NÃO INFORMADO").replace('',"NÃO INFORMADO")
 
+    # ✅ Padronização: "Automóvel" -> "Carro de Passeio"
+    if 'tipo_veiculo' in df.columns:
+        df['tipo_veiculo'] = (
+            df['tipo_veiculo']
+              .astype(str)
+              .str.replace(r'(?i)\bautom[oó]vel\b', 'Carro de Passeio', regex=True)
+        )
+
     # Ano de fabricação
     if 'ano_fabricacao' in df.columns:
         df['ano_fabricacao']=pd.to_numeric(df['ano_fabricacao'], errors='coerce').fillna(1900).astype(int)
@@ -421,9 +432,34 @@ try:
     df['mes']=df['data_completa'].dt.month.fillna(0).astype('Int64')
     df['dia']=df['data_completa'].dt.day.fillna(0).astype('Int64')
     df['trimestre']=df['data_completa'].dt.quarter.fillna(0).astype('Int64')
-    df['nome_mes']=df['data_completa'].dt.strftime('%B').fillna('NÃO INFORMADO')
-    df['dia_semana']=df['data_completa'].dt.strftime('%A').fillna('NÃO INFORMADO')
 
+    # ==========================
+    # ✅ (NOVO) Mês e dia da semana em PT-BR + campos de ordenação
+    # ==========================
+    MESES_PT = {
+        1: "Janeiro", 2: "Fevereiro", 3: "Março", 4: "Abril",
+        5: "Maio", 6: "Junho", 7: "Julho", 8: "Agosto",
+        9: "Setembro", 10: "Outubro", 11: "Novembro", 12: "Dezembro"
+    }
+    DIAS_SEMANA_PT = {
+        0: "Segunda-feira",
+        1: "Terça-feira",
+        2: "Quarta-feira",
+        3: "Quinta-feira",
+        4: "Sexta-feira",
+        5: "Sábado",
+        6: "Domingo"
+    }
+
+    # Ordenação (recomendado no PBI: classificar nome_mes por mes_ord; dia_semana por dia_semana_ord)
+    df['mes_ord'] = df['data_completa'].dt.month.fillna(0).astype('Int64')
+    # 1..7 (Segunda=1 ... Domingo=7)
+    df['dia_semana_ord'] = (df['data_completa'].dt.dayofweek + 1).fillna(0).astype('Int64')
+
+    df['nome_mes'] = df['data_completa'].dt.month.map(MESES_PT).fillna('NÃO INFORMADO')
+    df['dia_semana'] = df['data_completa'].dt.dayofweek.map(DIAS_SEMANA_PT).fillna('NÃO INFORMADO')
+
+    # fase do dia
     if 'fase_dia' not in df.columns:
         horas=df['horario_dt'].dt.hour
         df['fase_dia']=pd.cut(horas, bins=[-1,5,11,17,23],
@@ -462,6 +498,7 @@ except Exception as e:
     cur.close(); conn.close()
     tg_alert_error("TRANSFORM", e, transform_ini)
     raise
+
 # auditoria transform (OK)
 conn = connect_pg(DB_CONFIG); conn.autocommit=True
 cur = conn.cursor(); ensure_etl_log_table(cur)
@@ -485,6 +522,10 @@ conn.commit()
 
 def ensure_etl_structures(cur, conn):
     ensure_etl_log_table(cur)
+
+    # ✅ Garantir colunas de ordenação na dim_tempo (sem quebrar quem já tem a tabela)
+    cur.execute("ALTER TABLE IF EXISTS dim_tempo ADD COLUMN IF NOT EXISTS mes_ord INT;")
+    cur.execute("ALTER TABLE IF EXISTS dim_tempo ADD COLUMN IF NOT EXISTS dia_semana_ord INT;")
     conn.commit()
 
 ensure_etl_structures(cur, conn)
@@ -597,20 +638,45 @@ def get_or_create_dim_vitima(r):
     nid=cur.fetchone()[0]; _cache['dim_vitima'][key]=nid; stats['dim_vitima']['inserted']+=1; return nid
 
 def get_or_create_dim_tempo(r):
-    key=(as_date(r.get('data_completa')), as_time(r.get('horario_dt')), as_text(r.get('fase_dia')),
-         as_int(r.get('ano'),1900), as_int(r.get('mes'),0), as_int(r.get('dia'),0),
-         as_int(r.get('trimestre'),0), as_text(r.get('nome_mes')), as_text(r.get('dia_semana')))
-    if key in _cache['dim_tempo']: stats['dim_tempo']['lookups']+=1; return _cache['dim_tempo'][key]
-    cur.execute("""SELECT id_tempo FROM dim_tempo
-                   WHERE data_completa=%s AND horario=%s AND fase_dia=%s AND
-                         ano=%s AND mes=%s AND dia=%s AND trimestre=%s AND nome_mes=%s AND dia_semana=%s
-                   ORDER BY id_tempo DESC LIMIT 1""", key)
+    key=(
+        as_date(r.get('data_completa')),
+        as_time(r.get('horario_dt')),
+        as_text(r.get('fase_dia')),
+        as_int(r.get('ano'),1900),
+        as_int(r.get('mes'),0),
+        as_int(r.get('dia'),0),
+        as_int(r.get('trimestre'),0),
+        as_text(r.get('nome_mes')),
+        as_text(r.get('dia_semana')),
+        as_int(r.get('mes_ord'),0),
+        as_int(r.get('dia_semana_ord'),0),
+    )
+    if key in _cache['dim_tempo']:
+        stats['dim_tempo']['lookups']+=1
+        return _cache['dim_tempo'][key]
+
+    cur.execute("""
+        SELECT id_tempo FROM dim_tempo
+        WHERE data_completa=%s AND horario=%s AND fase_dia=%s AND
+              ano=%s AND mes=%s AND dia=%s AND trimestre=%s AND
+              nome_mes=%s AND dia_semana=%s AND mes_ord=%s AND dia_semana_ord=%s
+        ORDER BY id_tempo DESC LIMIT 1
+    """, key)
     t=cur.fetchone()
-    if t: _cache['dim_tempo'][key]=t[0]; stats['dim_tempo']['lookups']+=1; return t[0]
-    cur.execute("""INSERT INTO dim_tempo
-                   (data_completa, horario, fase_dia, ano, mes, dia, trimestre, nome_mes, dia_semana)
-                   VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s) RETURNING id_tempo""", key)
-    nid=cur.fetchone()[0]; _cache['dim_tempo'][key]=nid; stats['dim_tempo']['inserted']+=1; return nid
+    if t:
+        _cache['dim_tempo'][key]=t[0]
+        stats['dim_tempo']['lookups']+=1
+        return t[0]
+
+    cur.execute("""
+        INSERT INTO dim_tempo
+          (data_completa, horario, fase_dia, ano, mes, dia, trimestre, nome_mes, dia_semana, mes_ord, dia_semana_ord)
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) RETURNING id_tempo
+    """, key)
+    nid=cur.fetchone()[0]
+    _cache['dim_tempo'][key]=nid
+    stats['dim_tempo']['inserted']+=1
+    return nid
 
 def get_or_create_dim_cnd(r):
     cnd=as_text(r.get('condicao_meteorologica'))
@@ -681,13 +747,12 @@ except Exception as e:
     tempos["load"] = (load_end - load_ini).total_seconds()
     log.exception("Falha na etapa LOAD")
 
-    # >>> IMPORTANTE: limpar estado de transação abortada <<<
+    # limpar estado de transação abortada
     try:
         conn.rollback()
     except Exception:
         pass
 
-    # auditoria erro
     ensure_etl_structures(cur, conn)
     insert_etl_log(cur, "LOAD", load_ini, load_end, stats.get('fact_inserted_rows',0), status="ERRO", erro=str(e))
     conn.commit()
